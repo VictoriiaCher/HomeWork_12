@@ -162,17 +162,9 @@ class ABook(UserDict):
     def search(self, search_ch):
         result = []
         for name, record in self.data.items():
-            search = re.findall(search_ch, name)
+            search = re.findall(search_ch, f'{self.data[name]}')
             if search:
                 result.append(f'{self.data[name]}')
-            for phone in record.phones:
-                search = re.findall(search_ch, phone.value)
-                if search:
-                    result.append(f'{self.data[name]}')
-            if record.birthday:
-                search = re.findall(search_ch, str(record.birthday))
-                if search:
-                    result.append(f'{self.data[name]}')
         return result
 
     def save_to_file(self, name_file):
