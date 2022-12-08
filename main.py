@@ -30,12 +30,12 @@ def main():
 
     while True:
         command, user_data = handle_user_input(user_input)
-        # try:
-        output = handler(command)(user_data)
-        # except TypeError:
-        #     print(f"I dont understand the command '{command}'. Try again!")
-        # else:
-        print(output)
+        try:
+            output = handler(command)(user_data)
+        except TypeError:
+            print(f"I dont understand the command '{command}'. Try again!")
+        else:
+            print(output)
         user_input = input("\n" + "How can i help you?: ").lower()
 
 
